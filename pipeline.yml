@@ -1,0 +1,15 @@
+---
+resources:
+- name: resource-pipeline
+  type: git
+  source:
+    uri: https://github.com/danielinclouds/concourse-fail-intercept.git
+    branch: master
+
+jobs:
+- name: job-fail-intercept
+  plan:
+  - get: resource-pipeline
+    trigger: true
+  - task: task
+    file: resource-pipeline/task.yml
